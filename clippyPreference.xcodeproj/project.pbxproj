@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D202CEA0486D31800D8A456 /* clippyPreference_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCFA20370C41700C91783 /* clippyPreference_Prefix.pch */; };
+		8D202CEB0486D31800D8A456 /* clippyPreferencePref.h in Headers */ = {isa = PBXBuildFile; fileRef = F506C03C013D9D7901CA16C8 /* clippyPreferencePref.h */; };
+		8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		8D202CEE0486D31800D8A456 /* clippyPreferencePref.tiff in Resources */ = {isa = PBXBuildFile; fileRef = F506C040013D9D8001CA16C8 /* clippyPreferencePref.tiff */; };
+		8D202CEF0486D31800D8A456 /* clippyPreferencePref.xib in Resources */ = {isa = PBXBuildFile; fileRef = F506C042013D9D8C01CA16C8 /* clippyPreferencePref.xib */; };
+		8D202CF10486D31800D8A456 /* clippyPreferencePref.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* clippyPreferencePref.m */; };
+		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
+		A20DEC4A10AB6AEC00D2F44C /* PTKeyboardIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */; };
+		A2A1018F10ACB83B00F4EB23 /* PTKeyComboPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = A2A1018B10ACB83B00F4EB23 /* PTKeyComboPanel.nib */; };
+		A2A1019010ACB83B00F4EB23 /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A1018D10ACB83B00F4EB23 /* PTKeyCodes.plist */; };
+		A2D9ACA810ACD249002421E5 /* PTHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9AC9C10ACD249002421E5 /* PTHotKey.h */; };
+		A2D9ACA910ACD249002421E5 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9AC9D10ACD249002421E5 /* PTHotKey.m */; };
+		A2D9ACAA10ACD249002421E5 /* PTHotKeyCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9AC9E10ACD249002421E5 /* PTHotKeyCenter.h */; };
+		A2D9ACAB10ACD249002421E5 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9AC9F10ACD249002421E5 /* PTHotKeyCenter.m */; };
+		A2D9ACAC10ACD249002421E5 /* PTKeyBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9ACA010ACD249002421E5 /* PTKeyBroadcaster.h */; };
+		A2D9ACAD10ACD249002421E5 /* PTKeyBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9ACA110ACD249002421E5 /* PTKeyBroadcaster.m */; };
+		A2D9ACAE10ACD249002421E5 /* PTKeyCodeTranslator.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9ACA210ACD249002421E5 /* PTKeyCodeTranslator.h */; };
+		A2D9ACAF10ACD249002421E5 /* PTKeyCodeTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9ACA310ACD249002421E5 /* PTKeyCodeTranslator.m */; };
+		A2D9ACB010ACD249002421E5 /* PTKeyCombo.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9ACA410ACD249002421E5 /* PTKeyCombo.h */; };
+		A2D9ACB110ACD249002421E5 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9ACA510ACD249002421E5 /* PTKeyCombo.m */; };
+		A2D9ACB210ACD249002421E5 /* PTKeyComboPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D9ACA610ACD249002421E5 /* PTKeyComboPanel.h */; };
+		A2D9ACB310ACD249002421E5 /* PTKeyComboPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D9ACA710ACD249002421E5 /* PTKeyComboPanel.m */; };
+		A2E9FE9110AC986E00DA1393 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E9FE9010AC986E00DA1393 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		32DBCFA20370C41700C91783 /* clippyPreference_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clippyPreference_Prefix.pch; sourceTree = "<group>"; };
+		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D202CF80486D31800D8A456 /* clippyPreference.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clippyPreference.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PTKeyboardIcon.tiff; sourceTree = "<group>"; };
+		A2A1018C10ACB83B00F4EB23 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
+		A2A1018E10ACB83B00F4EB23 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		A2D9AC9C10ACD249002421E5 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTHotKey.h; path = PTHotKey/PTHotKey.h; sourceTree = "<group>"; };
+		A2D9AC9D10ACD249002421E5 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTHotKey.m; path = PTHotKey/PTHotKey.m; sourceTree = "<group>"; };
+		A2D9AC9E10ACD249002421E5 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTHotKeyCenter.h; path = PTHotKey/PTHotKeyCenter.h; sourceTree = "<group>"; };
+		A2D9AC9F10ACD249002421E5 /* PTHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTHotKeyCenter.m; path = PTHotKey/PTHotKeyCenter.m; sourceTree = "<group>"; };
+		A2D9ACA010ACD249002421E5 /* PTKeyBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTKeyBroadcaster.h; path = PTHotKey/PTKeyBroadcaster.h; sourceTree = "<group>"; };
+		A2D9ACA110ACD249002421E5 /* PTKeyBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTKeyBroadcaster.m; path = PTHotKey/PTKeyBroadcaster.m; sourceTree = "<group>"; };
+		A2D9ACA210ACD249002421E5 /* PTKeyCodeTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTKeyCodeTranslator.h; path = PTHotKey/PTKeyCodeTranslator.h; sourceTree = "<group>"; };
+		A2D9ACA310ACD249002421E5 /* PTKeyCodeTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTKeyCodeTranslator.m; path = PTHotKey/PTKeyCodeTranslator.m; sourceTree = "<group>"; };
+		A2D9ACA410ACD249002421E5 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTKeyCombo.h; path = PTHotKey/PTKeyCombo.h; sourceTree = "<group>"; };
+		A2D9ACA510ACD249002421E5 /* PTKeyCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTKeyCombo.m; path = PTHotKey/PTKeyCombo.m; sourceTree = "<group>"; };
+		A2D9ACA610ACD249002421E5 /* PTKeyComboPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTKeyComboPanel.h; path = PTHotKey/PTKeyComboPanel.h; sourceTree = "<group>"; };
+		A2D9ACA710ACD249002421E5 /* PTKeyComboPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTKeyComboPanel.m; path = PTHotKey/PTKeyComboPanel.m; sourceTree = "<group>"; };
+		A2E9FE9010AC986E00DA1393 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
+		F506C03C013D9D7901CA16C8 /* clippyPreferencePref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clippyPreferencePref.h; sourceTree = "<group>"; };
+		F506C03D013D9D7901CA16C8 /* clippyPreferencePref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clippyPreferencePref.m; sourceTree = "<group>"; };
+		F506C040013D9D8001CA16C8 /* clippyPreferencePref.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = clippyPreferencePref.tiff; sourceTree = "<group>"; };
+		F506C043013D9D8C01CA16C8 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/clippyPreferencePref.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D202CF20486D31800D8A456 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
+				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
+				A2E9FE9110AC986E00DA1393 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* clippyPreference */ = {
+			isa = PBXGroup;
+			children = (
+				A20DEC3010AB6AB700D2F44C /* PTHotkey */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32DBCFA10370C40200C91783 /* Other Sources */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = clippyPreference;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1018B10ACB83B00F4EB23 /* PTKeyComboPanel.nib */,
+				A2A1018D10ACB83B00F4EB23 /* PTKeyCodes.plist */,
+				A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */,
+				8D202CF70486D31800D8A456 /* Info.plist */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+				F506C040013D9D8001CA16C8 /* clippyPreferencePref.tiff */,
+				F506C042013D9D8C01CA16C8 /* clippyPreferencePref.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F506C03C013D9D7901CA16C8 /* clippyPreferencePref.h */,
+				F506C03D013D9D7901CA16C8 /* clippyPreferencePref.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
+				A2E9FE9010AC986E00DA1393 /* Carbon.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D202CF80486D31800D8A456 /* clippyPreference.prefPane */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32DBCFA10370C40200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCFA20370C41700C91783 /* clippyPreference_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		A20DEC3010AB6AB700D2F44C /* PTHotkey */ = {
+			isa = PBXGroup;
+			children = (
+				A2D9AC9C10ACD249002421E5 /* PTHotKey.h */,
+				A2D9AC9D10ACD249002421E5 /* PTHotKey.m */,
+				A2D9AC9E10ACD249002421E5 /* PTHotKeyCenter.h */,
+				A2D9AC9F10ACD249002421E5 /* PTHotKeyCenter.m */,
+				A2D9ACA010ACD249002421E5 /* PTKeyBroadcaster.h */,
+				A2D9ACA110ACD249002421E5 /* PTKeyBroadcaster.m */,
+				A2D9ACA210ACD249002421E5 /* PTKeyCodeTranslator.h */,
+				A2D9ACA310ACD249002421E5 /* PTKeyCodeTranslator.m */,
+				A2D9ACA410ACD249002421E5 /* PTKeyCombo.h */,
+				A2D9ACA510ACD249002421E5 /* PTKeyCombo.m */,
+				A2D9ACA610ACD249002421E5 /* PTKeyComboPanel.h */,
+				A2D9ACA710ACD249002421E5 /* PTKeyComboPanel.m */,
+			);
+			name = PTHotkey;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D202CE90486D31800D8A456 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D202CEA0486D31800D8A456 /* clippyPreference_Prefix.pch in Headers */,
+				8D202CEB0486D31800D8A456 /* clippyPreferencePref.h in Headers */,
+				A2D9ACA810ACD249002421E5 /* PTHotKey.h in Headers */,
+				A2D9ACAA10ACD249002421E5 /* PTHotKeyCenter.h in Headers */,
+				A2D9ACAC10ACD249002421E5 /* PTKeyBroadcaster.h in Headers */,
+				A2D9ACAE10ACD249002421E5 /* PTKeyCodeTranslator.h in Headers */,
+				A2D9ACB010ACD249002421E5 /* PTKeyCombo.h in Headers */,
+				A2D9ACB210ACD249002421E5 /* PTKeyComboPanel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D202CE80486D31800D8A456 /* clippyPreference */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "clippyPreference" */;
+			buildPhases = (
+				8D202CE90486D31800D8A456 /* Headers */,
+				8D202CEC0486D31800D8A456 /* Resources */,
+				8D202CF00486D31800D8A456 /* Sources */,
+				8D202CF20486D31800D8A456 /* Frameworks */,
+				8D202CF50486D31800D8A456 /* Rez */,
+				A2E9FEA210AC9A5400DA1393 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = clippyPreference;
+			productInstallPath = "$(HOME)/Library/PreferencePanes";
+			productName = clippyPreference;
+			productReference = 8D202CF80486D31800D8A456 /* clippyPreference.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "clippyPreference" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* clippyPreference */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D202CE80486D31800D8A456 /* clippyPreference */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D202CEC0486D31800D8A456 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D202CED0486D31800D8A456 /* InfoPlist.strings in Resources */,
+				8D202CEE0486D31800D8A456 /* clippyPreferencePref.tiff in Resources */,
+				8D202CEF0486D31800D8A456 /* clippyPreferencePref.xib in Resources */,
+				A20DEC4A10AB6AEC00D2F44C /* PTKeyboardIcon.tiff in Resources */,
+				A2A1018F10ACB83B00F4EB23 /* PTKeyComboPanel.nib in Resources */,
+				A2A1019010ACB83B00F4EB23 /* PTKeyCodes.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8D202CF50486D31800D8A456 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A2E9FEA210AC9A5400DA1393 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r $TARGET_BUILD_DIR/clippyPreference.prefPane $HOME/Library/PreferencePanes/";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D202CF00486D31800D8A456 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D202CF10486D31800D8A456 /* clippyPreferencePref.m in Sources */,
+				A2D9ACA910ACD249002421E5 /* PTHotKey.m in Sources */,
+				A2D9ACAB10ACD249002421E5 /* PTHotKeyCenter.m in Sources */,
+				A2D9ACAD10ACD249002421E5 /* PTKeyBroadcaster.m in Sources */,
+				A2D9ACAF10ACD249002421E5 /* PTKeyCodeTranslator.m in Sources */,
+				A2D9ACB110ACD249002421E5 /* PTKeyCombo.m in Sources */,
+				A2D9ACB310ACD249002421E5 /* PTKeyComboPanel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A2A1018B10ACB83B00F4EB23 /* PTKeyComboPanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2A1018C10ACB83B00F4EB23 /* English */,
+			);
+			name = PTKeyComboPanel.nib;
+			sourceTree = "<group>";
+		};
+		A2A1018D10ACB83B00F4EB23 /* PTKeyCodes.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2A1018E10ACB83B00F4EB23 /* English */,
+			);
+			name = PTKeyCodes.plist;
+			sourceTree = "<group>";
+		};
+		F506C042013D9D8C01CA16C8 /* clippyPreferencePref.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F506C043013D9D8C01CA16C8 /* English */,
+			);
+			name = clippyPreferencePref.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DBD214908BA80EA00186707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = clippyPreference_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = clippyPreference;
+				WRAPPER_EXTENSION = prefPane;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DBD214A08BA80EA00186707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = clippyPreference_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = clippyPreference;
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Release;
+		};
+		1DBD214D08BA80EA00186707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 ppc x86_64";
+			};
+			name = Debug;
+		};
+		1DBD214E08BA80EA00186707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 ppc x86_64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "clippyPreference" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DBD214908BA80EA00186707 /* Debug */,
+				1DBD214A08BA80EA00186707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "clippyPreference" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DBD214D08BA80EA00186707 /* Debug */,
+				1DBD214E08BA80EA00186707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
