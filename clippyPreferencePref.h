@@ -11,20 +11,23 @@
 
 @interface clippyPreferencePref : NSPreferencePane 
 {
-  unsigned int          hisval_;
+  unsigned int         hisval_;
+  IBOutlet NSButton    *useClippyText;
   IBOutlet NSTextField *clippyTextPath;
+  IBOutlet NSButton    *selecPathButton;
   IBOutlet NSTextField *clippyMaxHistory;
   IBOutlet NSTextField *clippyHotKey;
   IBOutlet NSStepper   *stepper;
-  CFStringRef           appID;
+  CFStringRef          appID;
+  NSMutableString      *realClippyTextPath;
 }
 
 - (void)     mainViewDidLoad;
+- (IBAction) useClippyTextClicked:(id)sender;
 - (IBAction) clippyTextPathClicked:(id)sender;
 - (IBAction) clippyHotKeyClicked:(id)sender;
 - (IBAction) clippyStepperClicked:(id)sender;
 
 @property (nonatomic, readwrite) unsigned int history_value;
-
 
 @end
