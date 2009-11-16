@@ -19,7 +19,7 @@
 {
   if ((self = [super initWithBundle:bundle]))
   {
-    appID = CFSTR("com.hippos-lab.clippy");
+    appID = CFSTR("com.hippos-lab.clippyPreference");
   }
   return self;
 }
