@@ -8,6 +8,7 @@
 
 #import <PreferencePanes/PreferencePanes.h>
 
+@class PTKeyCombo;
 
 @interface clippyPreferencePref : NSPreferencePane 
 {
@@ -19,14 +20,15 @@
   IBOutlet NSTextField *clippyHotKey;
   IBOutlet NSStepper   *stepper;
   CFStringRef          appID;
-  NSMutableString      *realClippyTextPath;
 }
 
-- (void)     mainViewDidLoad;
-- (IBAction) useClippyTextClicked:(id)sender;
-- (IBAction) clippyTextPathClicked:(id)sender;
-- (IBAction) clippyHotKeyClicked:(id)sender;
-- (IBAction) clippyStepperClicked:(id)sender;
+- (void)         mainViewDidLoad;
+- (IBAction)     useClippyTextClicked:(id)sender;
+- (IBAction)     clippyTextPathClicked:(id)sender;
+- (IBAction)     clippyHotKeyClicked:(id)sender;
+- (IBAction)     clippyStepperClicked:(id)sender;
+- (void)         regHotKey:(PTKeyCombo *)keyCombo update:(BOOL)update;
+- (PTKeyCombo *) keyComboFromPref;
 
 @property (nonatomic, readwrite) unsigned int history_value;
 
