@@ -11,8 +11,6 @@
 #import "PTHotKey/PTHotKeyCenter.h"
 #import "PTHotKey/PTKeyComboPanel.h"
 
-EventHotKeyRef hot_key_ref;
-
 @implementation clippyPreferencePref
 
 @synthesize history_value = hisval_;
@@ -21,7 +19,7 @@ EventHotKeyRef hot_key_ref;
 {
   if ((self = [super initWithBundle:bundle]) != nil)
   {
-    appID = CFSTR("com.hippos-lab.clippyPreference");
+    appID = CFSTR("com.hippos-lab.clippy");
   }
   return self;
 }
@@ -72,18 +70,8 @@ EventHotKeyRef hot_key_ref;
   }
 
   PTKeyCombo *keyCombo = [self keyComboFromPref];
-  [clippyHotKey setStringValue: [keyCombo description]];
-  [self regHotKey:keyCombo update:NO];
-  NSInteger   k  = [keyCombo keyCode];
-  NSUInteger  m  = [keyCombo modifiers];
-  CFNumberRef kk = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &k);
-  CFNumberRef mm = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &m);
-
-  CFPreferencesSetAppValue(CFSTR("keyCode"), kk, appID);
-  CFPreferencesSetAppValue(CFSTR("modifiers"), mm, appID);
+  [self regHotKey:keyCombo];
   [keyCombo release];
-  CFRelease(kk);
-  CFRelease(mm);
 }
 
 - (IBAction) useClippyTextClicked:(id)sender
@@ -122,7 +110,7 @@ EventHotKeyRef hot_key_ref;
   [panel setKeyBindingName: [hotKey name]];
   if ([panel runModal] == NSOKButton)
   {
-    [self regHotKey:[panel keyCombo] update:YES];
+    [self regHotKey:[panel keyCombo]];
   }
   [keyCombo release];
 }
@@ -162,17 +150,8 @@ EventHotKeyRef hot_key_ref;
   return keyCombo;
 }
 
-- (void)regHotKey:(PTKeyCombo *)keyCombo update:(BOOL)update
+- (void)regHotKey:(PTKeyCombo *)keyCombo
 {
-  if (update)
-  {
-    UnregisterEventHotKey(hot_key_ref);
-  }
-  /* install hot key */
-  EventHotKeyID hot_key_id;
-  hot_key_id.signature = 'clp1';
-  hot_key_id.id        = 1;
-  RegisterEventHotKey([keyCombo keyCode], [keyCombo modifiers], hot_key_id, GetApplicationEventTarget(), 0, &hot_key_ref);
   [clippyHotKey setStringValue: [keyCombo description]];
 
   NSInteger   k  = [keyCombo keyCode];
@@ -180,11 +159,23 @@ EventHotKeyRef hot_key_ref;
   CFNumberRef kk = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &k);
   CFNumberRef mm = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &m);
 
-  CFPreferencesSetAppValue(CFSTR("keyCode"), kk, appID);
-  CFPreferencesSetAppValue(CFSTR("modifiers"), mm, appID);
+  CFStringRef keys[2];
+  CFNumberRef values[2];
+
+  keys[0]   = CFSTR("keyCode");
+  values[0] = kk;
+  keys[1]   = CFSTR("modifiers");
+  values[1] = mm;
+
+  const CFDictionaryKeyCallBacks   keyCB = kCFCopyStringDictionaryKeyCallBacks;
+  const CFDictionaryValueCallBacks valCB = kCFTypeDictionaryValueCallBacks;
+  CFDictionaryRef                  dic   =
+    CFDictionaryCreate(kCFAllocatorDefault, (const void **)keys, (const void **)values, 2, &keyCB, &valCB);
+  CFPreferencesSetAppValue(CFSTR("clippyKeyCombo"),dic,appID);
 
   CFRelease(kk);
   CFRelease(mm);
+  CFRelease(dic);
 }
 
 - (void)didSelect

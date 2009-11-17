@@ -27,7 +27,7 @@
 - (IBAction)     clippyTextPathClicked:(id)sender;
 - (IBAction)     clippyHotKeyClicked:(id)sender;
 - (IBAction)     clippyStepperClicked:(id)sender;
-- (void)         regHotKey:(PTKeyCombo *)keyCombo update:(BOOL)update;
+- (void)         regHotKey:(PTKeyCombo *)keyCombo;
 - (PTKeyCombo *) keyComboFromPref;
 
 @property (nonatomic, readwrite) unsigned int history_value;
