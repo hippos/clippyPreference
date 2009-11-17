@@ -19,7 +19,7 @@ EventHotKeyRef hot_key_ref;
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
-  if ((self = [super initWithBundle:bundle]))
+  if ((self = [super initWithBundle:bundle]) != nil)
   {
     appID = CFSTR("com.hippos-lab.clippyPreference");
   }
@@ -28,8 +28,16 @@ EventHotKeyRef hot_key_ref;
 
 - (void) mainViewDidLoad
 {
+
+  hisval_ = 10;
+  [useClippyText setState:YES];
+  [clippyMaxHistory setIntegerValue:hisval_];
+  [stepper setIntegerValue:hisval_];
+  [selecPathButton setEnabled:![useClippyText state]];
+  [clippyTextPath setStringValue:@""];
+
   CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("useClippyText"), appID);
-  if ((value && CFGetTypeID(value)) == CFBooleanGetTypeID())
+  if (value && (CFGetTypeID(value) == CFBooleanGetTypeID()))
   {
     [useClippyText setState:CFBooleanGetValue(value)];
   }
@@ -39,32 +47,23 @@ EventHotKeyRef hot_key_ref;
   }
 
   value = CFPreferencesCopyAppValue(CFSTR("history"), appID);
-  if ((value && CFGetTypeID(value)) == CFNumberGetTypeID())
+  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
   {
     CFNumberGetValue(value, kCFNumberSInt32Type, &hisval_);
-  }
-  else
-  {
-    hisval_ = 10;
+    [clippyMaxHistory setIntegerValue:hisval_];
+    [stepper setIntegerValue:hisval_];
   }
   if (value)
   {
     CFRelease(value);
   }
 
-  [clippyMaxHistory setIntegerValue:hisval_];
-  [stepper setIntegerValue:hisval_];
-
-  [selecPathButton setEnabled:![useClippyText state]];
-  [clippyTextPath setStringValue:@""];
-
   if ([useClippyText state] == NO)
   {
     value = CFPreferencesCopyAppValue(CFSTR("textPath"), appID);
-    if ((value && CFGetTypeID(value)) == CFStringGetTypeID())
+    if (value && (CFGetTypeID(value) == CFStringGetTypeID()))
     {
       [clippyTextPath setStringValue:(NSString *)value];
-      CFRelease(value);
     }
     if (value)
     {
@@ -72,17 +71,17 @@ EventHotKeyRef hot_key_ref;
     }
   }
 
-  PTKeyCombo *kc = [self keyComboFromPref];
-  [clippyHotKey setStringValue: [kc description]];
-  [self regHotKey:kc update:NO];
-  NSInteger   k  = [kc keyCode];
-  NSUInteger  m  = [kc modifiers];
+  PTKeyCombo *keyCombo = [self keyComboFromPref];
+  [clippyHotKey setStringValue: [keyCombo description]];
+  [self regHotKey:keyCombo update:NO];
+  NSInteger   k  = [keyCombo keyCode];
+  NSUInteger  m  = [keyCombo modifiers];
   CFNumberRef kk = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &k);
   CFNumberRef mm = CFNumberCreate(kCFAllocatorDefault, kCFNumberNSIntegerType, &m);
 
   CFPreferencesSetAppValue(CFSTR("keyCode"), kk, appID);
   CFPreferencesSetAppValue(CFSTR("modifiers"), mm, appID);
-  [kc release];
+  [keyCombo release];
   CFRelease(kk);
   CFRelease(mm);
 }
@@ -125,6 +124,7 @@ EventHotKeyRef hot_key_ref;
   {
     [self regHotKey:[panel keyCombo] update:YES];
   }
+  [keyCombo release];
 }
 
 - (IBAction) clippyStepperClicked:(id)sender
@@ -141,12 +141,12 @@ EventHotKeyRef hot_key_ref;
   NSUInteger        m = cmdKey + optionKey;
 
   CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("keyCode"), appID);
-  if ((value && CFGetTypeID(value)) == CFNumberGetTypeID())
+  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
   {
     CFNumberGetValue(value, kCFNumberNSIntegerType, &k);
   }
   value = CFPreferencesCopyAppValue(CFSTR("modifiers"), appID);
-  if ((value && CFGetTypeID(value)) == CFNumberGetTypeID())
+  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
   {
     CFNumberGetValue(value, kCFNumberNSIntegerType, &m);
   }
