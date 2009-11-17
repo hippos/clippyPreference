@@ -154,6 +154,10 @@ EventHotKeyRef hot_key_ref;
       CFNumberGetValue(numref, kCFNumberNSIntegerType, &m);
     }
   }
+  if (value)
+  {
+    CFRelease(value);
+  }
   PTKeyCombo *keyCombo = [[PTKeyCombo alloc] initWithKeyCode:k modifiers:m];
   return keyCombo;
 }
