@@ -187,9 +187,14 @@
 {
   if ([useClippyText state] == YES)
   {
-    CFPreferencesSetAppValue(CFSTR("textPath"),NULL,appID);
+    CFPreferencesSetAppValue(CFSTR("textPath"), NULL, appID);
   }
-  CFPreferencesAppSynchronize(appID);
+  CFPreferencesAppSynchronize(appID);  
+
+  NSString                        *observedObject = [NSString stringWithFormat:@"%s",CFStringGetCStringPtr(appID,kCFStringEncodingASCII)];
+  NSLog(@"observedObject(%@)",observedObject);
+  NSDistributedNotificationCenter *center         = [NSDistributedNotificationCenter defaultCenter];
+  [center postNotificationName: @"clippyPref Notification" object: observedObject userInfo: nil deliverImmediately: YES];
 }
 
 @end
