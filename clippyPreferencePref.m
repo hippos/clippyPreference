@@ -192,7 +192,6 @@
   CFPreferencesAppSynchronize(appID);  
 
   NSString                        *observedObject = [NSString stringWithFormat:@"%s",CFStringGetCStringPtr(appID,kCFStringEncodingASCII)];
-  NSLog(@"observedObject(%@)",observedObject);
   NSDistributedNotificationCenter *center         = [NSDistributedNotificationCenter defaultCenter];
   [center postNotificationName: @"clippyPref Notification" object: observedObject userInfo: nil deliverImmediately: YES];
 }
