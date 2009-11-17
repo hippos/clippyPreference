@@ -137,21 +137,25 @@ EventHotKeyRef hot_key_ref;
 
 - (PTKeyCombo*)keyComboFromPref
 {
-  NSInteger         k = 8;
-  NSUInteger        m = cmdKey + optionKey;
+  NSInteger         k     = 8;
+  NSUInteger        m     = cmdKey + optionKey;
 
-  CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("keyCode"), appID);
-  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
+  CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("clippyKeyCombo"), appID);
+  if (value && (CFGetTypeID(value) == CFDictionaryGetTypeID()))
   {
-    CFNumberGetValue(value, kCFNumberNSIntegerType, &k);
+    CFNumberRef numref = CFDictionaryGetValue(value, CFSTR("keyCode"));
+    if (numref)
+    {
+      CFNumberGetValue(numref, kCFNumberNSIntegerType, &k);
+    }
+    numref = CFDictionaryGetValue(value, CFSTR("modifiers"));
+    if (numref)
+    {
+      CFNumberGetValue(numref, kCFNumberNSIntegerType, &m);
+    }
   }
-  value = CFPreferencesCopyAppValue(CFSTR("modifiers"), appID);
-  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
-  {
-    CFNumberGetValue(value, kCFNumberNSIntegerType, &m);
-  }
-  PTKeyCombo* kc = [[PTKeyCombo alloc] initWithKeyCode:k modifiers:m];
-  return kc;
+  PTKeyCombo *keyCombo = [[PTKeyCombo alloc] initWithKeyCode:k modifiers:m];
+  return keyCombo;
 }
 
 - (void)regHotKey:(PTKeyCombo *)keyCombo update:(BOOL)update
