@@ -11,16 +11,28 @@
 #import "PTHotKey/PTHotKeyCenter.h"
 #import "PTHotKey/PTKeyComboPanel.h"
 
+static CFStringRef appID              = CFSTR("com.hippos-lab.clippy");
+/* clippy preference keys */
+static CFStringRef cfUseClippyText    = CFSTR("useClippyText");
+static CFStringRef cfClippyMaxHistory = CFSTR("clippyMaxHistory");
+static CFStringRef cfClippyTextPath   = CFSTR("clippyTextPath");
+static CFStringRef cfClippyKeyCombo   = CFSTR("clippyKeyCombo");
+static CFStringRef cfKeyCode          = CFSTR("keyCode");
+static CFStringRef cfModifiers        = CFSTR("modifiers");
+static NSString   *nsUseClippyText    = @"useClippyText";
+static NSString   *nsClippyMaxHistory = @"clippyMaxHistory";
+static NSString   *nsClippyTextPath   = @"clippyTextPath";
+static NSString   *nsClippyKeyCombo   = @"clippyKeyCombo";
+static NSString   *nsKeyCode          = @"keyCode";
+static NSString   *nsModifiers        = @"modifiers";
+
 @implementation clippyPreferencePref
 
 @synthesize history_value = hisval_;
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
-  if ((self = [super initWithBundle:bundle]) != nil)
-  {
-    appID = CFSTR("com.hippos-lab.clippy");
-  }
+  self = [super initWithBundle:bundle];
   return self;
 }
 
@@ -34,7 +46,7 @@
   [selecPathButton setEnabled:![useClippyText state]];
   [clippyTextPath setStringValue:@""];
 
-  CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("useClippyText"), appID);
+  CFPropertyListRef value = CFPreferencesCopyAppValue(cfUseClippyText, appID);
   if (value && (CFGetTypeID(value) == CFBooleanGetTypeID()))
   {
     [useClippyText setState:CFBooleanGetValue(value)];
@@ -44,7 +56,7 @@
     CFRelease(value);
   }
 
-  value = CFPreferencesCopyAppValue(CFSTR("history"), appID);
+  value = CFPreferencesCopyAppValue(cfClippyMaxHistory, appID);
   if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
   {
     CFNumberGetValue(value, kCFNumberSInt32Type, &hisval_);
@@ -58,7 +70,7 @@
 
   if ([useClippyText state] == NO)
   {
-    value = CFPreferencesCopyAppValue(CFSTR("textPath"), appID);
+    value = CFPreferencesCopyAppValue(cfClippyTextPath, appID);
     if (value && (CFGetTypeID(value) == CFStringGetTypeID()))
     {
       NSString  *temp = [NSString stringWithString:(NSString*)value];
@@ -80,16 +92,16 @@
   [selecPathButton setEnabled:![useClippyText state]];
   if ([useClippyText state])
   {
-    CFPreferencesSetAppValue(CFSTR("useClippyText"), kCFBooleanTrue, appID);
-    CFPreferencesSetAppValue(CFSTR("textPath"), NULL, appID);
+    CFPreferencesSetAppValue(cfUseClippyText, kCFBooleanTrue, appID);
+    CFPreferencesSetAppValue(cfClippyTextPath, NULL, appID);
     [clippyTextPath setStringValue:@""];
-    [changeDict removeObjectForKey:@"textPath"];
-    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:@"useClippyText"];
+    [changeDict removeObjectForKey:nsClippyTextPath];
+    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:nsUseClippyText];
   }
   else
   {
-    CFPreferencesSetAppValue(CFSTR("useClippyText"), kCFBooleanFalse, appID);
-    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:@"useClippyText"];
+    CFPreferencesSetAppValue(cfUseClippyText, kCFBooleanFalse, appID);
+    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:nsUseClippyText];
   }
 }
 
@@ -102,8 +114,8 @@
     return;
   }
   [clippyTextPath setStringValue:[[op filename] lastPathComponent]];
-  [changeDict setValue:[op filename] forKey:@"textPath"];
-  CFPreferencesSetAppValue(CFSTR("textPath"),[op filename],appID);
+  [changeDict setValue:[op filename] forKey:nsClippyTextPath];
+  CFPreferencesSetAppValue(cfClippyTextPath,[op filename],appID);
 }
 
 - (IBAction) clippyHotKeyClicked:(id)sender
@@ -117,9 +129,9 @@
   if ([panel runModal] == NSOKButton)
   {
     [self regHotKey:[panel keyCombo]];
-    NSArray *keys = [NSArray arrayWithObjects:@"keyCode",@"modifiers",nil];
+    NSArray *keys = [NSArray arrayWithObjects:nsKeyCode,nsModifiers,nil];
     NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[keyCombo keyCode]],[NSNumber numberWithInteger:[keyCombo modifiers]],nil];
-    [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"clippyKeyCombo"];
+    [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:nsClippyKeyCombo];
   }
   [keyCombo release];
 }
@@ -127,9 +139,9 @@
 - (IBAction) clippyStepperClicked:(id)sender
 {
   [clippyMaxHistory setIntegerValue:hisval_];
-  [changeDict setValue:[NSNumber numberWithInteger:hisval_] forKey:@"history"];
+  [changeDict setValue:[NSNumber numberWithInteger:hisval_] forKey:nsClippyMaxHistory];
   CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt32Type,&hisval_);
-  CFPreferencesSetAppValue(CFSTR("history"),h,appID);
+  CFPreferencesSetAppValue(cfClippyMaxHistory,h,appID);
   CFRelease(h);
 }
 
@@ -138,15 +150,15 @@
   NSInteger         k     = 8;
   NSUInteger        m     = cmdKey + optionKey;
 
-  CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("clippyKeyCombo"), appID);
+  CFPropertyListRef value = CFPreferencesCopyAppValue(cfClippyKeyCombo, appID);
   if (value && (CFGetTypeID(value) == CFDictionaryGetTypeID()))
   {
-    CFNumberRef numref = CFDictionaryGetValue(value, CFSTR("keyCode"));
+    CFNumberRef numref = CFDictionaryGetValue(value, cfKeyCode);
     if (numref)
     {
       CFNumberGetValue(numref, kCFNumberNSIntegerType, &k);
     }
-    numref = CFDictionaryGetValue(value, CFSTR("modifiers"));
+    numref = CFDictionaryGetValue(value, cfModifiers);
     if (numref)
     {
       CFNumberGetValue(numref, kCFNumberNSIntegerType, &m);
@@ -172,16 +184,16 @@
   CFStringRef keys[2];
   CFNumberRef values[2];
 
-  keys[0]   = CFSTR("keyCode");
+  keys[0]   = cfKeyCode;
   values[0] = kk;
-  keys[1]   = CFSTR("modifiers");
+  keys[1]   = cfModifiers;
   values[1] = mm;
 
   const CFDictionaryKeyCallBacks   keyCB = kCFCopyStringDictionaryKeyCallBacks;
   const CFDictionaryValueCallBacks valCB = kCFTypeDictionaryValueCallBacks;
   CFDictionaryRef                  dic   =
     CFDictionaryCreate(kCFAllocatorDefault, (const void **)keys, (const void **)values, 2, &keyCB, &valCB);
-  CFPreferencesSetAppValue(CFSTR("clippyKeyCombo"),dic,appID);
+  CFPreferencesSetAppValue(cfClippyKeyCombo,dic,appID);
 
   CFRelease(kk);
   CFRelease(mm);

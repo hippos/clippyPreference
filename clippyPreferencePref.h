@@ -19,7 +19,6 @@
   IBOutlet NSTextField *clippyMaxHistory;
   IBOutlet NSTextField *clippyHotKey;
   IBOutlet NSStepper   *stepper;
-  CFStringRef          appID;
   NSMutableDictionary  *changeDict;
 }
 
