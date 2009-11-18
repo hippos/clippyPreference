@@ -61,7 +61,8 @@
     value = CFPreferencesCopyAppValue(CFSTR("textPath"), appID);
     if (value && (CFGetTypeID(value) == CFStringGetTypeID()))
     {
-      [clippyTextPath setStringValue:(NSString *)value];
+      NSString  *temp = [NSString stringWithString:(NSString*)value];
+      [clippyTextPath setStringValue:[temp lastPathComponent]];
     }
     if (value)
     {
@@ -80,11 +81,15 @@
   if ([useClippyText state])
   {
     CFPreferencesSetAppValue(CFSTR("useClippyText"), kCFBooleanTrue, appID);
+    CFPreferencesSetAppValue(CFSTR("textPath"), NULL, appID);
     [clippyTextPath setStringValue:@""];
+    [changeDict removeObjectForKey:@"textPath"];
+    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:@"useClippyText"];
   }
   else
   {
     CFPreferencesSetAppValue(CFSTR("useClippyText"), kCFBooleanFalse, appID);
+    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:@"useClippyText"];
   }
 }
 
@@ -97,6 +102,7 @@
     return;
   }
   [clippyTextPath setStringValue:[[op filename] lastPathComponent]];
+  [changeDict setValue:[op filename] forKey:@"textPath"];
   CFPreferencesSetAppValue(CFSTR("textPath"),[op filename],appID);
 }
 
@@ -111,6 +117,9 @@
   if ([panel runModal] == NSOKButton)
   {
     [self regHotKey:[panel keyCombo]];
+    NSArray *keys = [NSArray arrayWithObjects:@"keyCode",@"modifiers",nil];
+    NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[keyCombo keyCode]],[NSNumber numberWithInteger:[keyCombo modifiers]],nil];
+    [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"clippyKeyCombo"];
   }
   [keyCombo release];
 }
@@ -118,6 +127,7 @@
 - (IBAction) clippyStepperClicked:(id)sender
 {
   [clippyMaxHistory setIntegerValue:hisval_];
+  [changeDict setValue:[NSNumber numberWithInteger:hisval_] forKey:@"history"];
   CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt32Type,&hisval_);
   CFPreferencesSetAppValue(CFSTR("history"),h,appID);
   CFRelease(h);
@@ -180,20 +190,29 @@
 
 - (void)didSelect
 {
-  /* nothing todo(now) */
+  changeDict = [[NSMutableDictionary alloc] init];
 }
 
 - (void)didUnselect
 {
-  if ([useClippyText state] == YES)
+  if (([useClippyText state] == NO) && ([[clippyTextPath stringValue] length] == 0))
   {
-    CFPreferencesSetAppValue(CFSTR("textPath"), NULL, appID);
+    [useClippyText setState:YES];
+    [self useClippyTextClicked:self];
   }
-  CFPreferencesAppSynchronize(appID);  
 
-  NSString                        *observedObject = [NSString stringWithFormat:@"%s",CFStringGetCStringPtr(appID,kCFStringEncodingASCII)];
-  NSDistributedNotificationCenter *center         = [NSDistributedNotificationCenter defaultCenter];
-  [center postNotificationName: @"clippyPref Notification" object: observedObject userInfo: nil deliverImmediately: YES];
+  CFPreferencesAppSynchronize(appID);
+
+  if ([changeDict count] > 0)
+  {
+    NSString                        *observedObject =
+      [NSString stringWithFormat:@"%s", CFStringGetCStringPtr(appID, kCFStringEncodingASCII)];
+    NSDistributedNotificationCenter *center         = [NSDistributedNotificationCenter defaultCenter];
+    [center postNotificationName: @"clippyPref Notification" object: observedObject userInfo: changeDict
+     deliverImmediately: YES]
+    ;
+  }
+  [changeDict release];
 }
 
 @end
