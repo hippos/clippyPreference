@@ -101,7 +101,7 @@ static NSString   *nsModifiers        = @"modifiers";
   else
   {
     CFPreferencesSetAppValue(cfUseClippyText, kCFBooleanFalse, appID);
-    [changeDict setValue:[NSNumber numberWithInteger:YES] forKey:nsUseClippyText];
+    [changeDict setValue:[NSNumber numberWithInteger:NO] forKey:nsUseClippyText];
   }
 }
 
@@ -115,6 +115,7 @@ static NSString   *nsModifiers        = @"modifiers";
   }
   [clippyTextPath setStringValue:[[op filename] lastPathComponent]];
   [changeDict setValue:[op filename] forKey:nsClippyTextPath];
+  [changeDict setValue:[NSNumber numberWithInteger:NO] forKey:nsUseClippyText];
   CFPreferencesSetAppValue(cfClippyTextPath,[op filename],appID);
 }
 
