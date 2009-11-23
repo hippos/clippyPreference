@@ -131,7 +131,7 @@ static NSString   *nsModifiers        = @"modifiers";
   {
     [self regHotKey:[panel keyCombo]];
     NSArray *keys = [NSArray arrayWithObjects:nsKeyCode,nsModifiers,nil];
-    NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[keyCombo keyCode]],[NSNumber numberWithInteger:[keyCombo modifiers]],nil];
+    NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[[panel keyCombo] keyCode]],[NSNumber numberWithUnsignedInteger:[[panel keyCombo] modifiers]],nil];
     [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:nsClippyKeyCombo];
   }
   [keyCombo release];
