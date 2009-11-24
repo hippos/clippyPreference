@@ -29,6 +29,7 @@
 - (IBAction)     clippyStepperClicked:(id)sender;
 - (void)         regHotKey:(PTKeyCombo *)keyCombo;
 - (PTKeyCombo *) keyComboFromPref;
+- (void)         hotKeySheetDidEndWithReturnCode: (NSNumber *)returnCode;
 
 @property (nonatomic, readwrite) unsigned int history_value;
 

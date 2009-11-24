@@ -127,13 +127,7 @@ static NSString   *nsModifiers        = @"modifiers";
   PTKeyComboPanel *panel = [PTKeyComboPanel sharedPanel];
   [panel setKeyCombo: [hotKey keyCombo]];
   [panel setKeyBindingName: [hotKey name]];
-  if ([panel runModal] == NSOKButton)
-  {
-    [self regHotKey:[panel keyCombo]];
-    NSArray *keys = [NSArray arrayWithObjects:nsKeyCode,nsModifiers,nil];
-    NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[[panel keyCombo] keyCode]],[NSNumber numberWithUnsignedInteger:[[panel keyCombo] modifiers]],nil];
-    [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:nsClippyKeyCombo];
-  }
+  [panel runSheeetForModalWindow:[NSApp mainWindow] target:self];
   [keyCombo release];
 }
 
@@ -226,6 +220,18 @@ static NSString   *nsModifiers        = @"modifiers";
     ;
   }
   [changeDict release];
+}
+
+- (void)hotKeySheetDidEndWithReturnCode:(NSNumber *)returnCode
+{
+  if ([returnCode integerValue] == NSOKButton)
+  {
+    PTKeyComboPanel *panel = [PTKeyComboPanel sharedPanel];
+    [self regHotKey:[panel keyCombo]];
+    NSArray         *keys   = [NSArray arrayWithObjects:nsKeyCode, nsModifiers, nil];
+    NSArray         *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[[panel keyCombo] keyCode]], [NSNumber numberWithUnsignedInteger:[[panel keyCombo] modifiers]], nil];
+    [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:nsClippyKeyCombo];
+  }
 }
 
 @end
