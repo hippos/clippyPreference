@@ -82,7 +82,8 @@ static NSString   *nsModifiers        = @"modifiers";
       CFRelease(value);
     }
   }
-
+  
+  [selecPathButton setEnabled:![useClippyText state]];
   PTKeyCombo *keyCombo = [self keyComboFromPref];
   [self regHotKey:keyCombo];
   [keyCombo release];
