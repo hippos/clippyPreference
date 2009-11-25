@@ -10,7 +10,7 @@
 
 @class PTKeyCombo;
 
-@interface clippyPreferencePref : NSPreferencePane 
+@interface clippyPreferencePref : NSPreferencePane <NSTextFieldDelegate>
 {
   unsigned int         hisval_;
   IBOutlet NSButton    *useClippyText;

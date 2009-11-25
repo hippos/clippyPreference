@@ -42,6 +42,7 @@ static NSString   *nsModifiers        = @"modifiers";
   hisval_ = 10;
   [useClippyText setState:YES];
   [clippyMaxHistory setIntegerValue:hisval_];
+  [clippyMaxHistory setDelegate:self];
   [stepper setIntegerValue:hisval_];
   [selecPathButton setEnabled:![useClippyText state]];
   [clippyTextPath setStringValue:@""];
@@ -232,6 +233,23 @@ static NSString   *nsModifiers        = @"modifiers";
     NSArray         *values = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[[panel keyCombo] keyCode]], [NSNumber numberWithUnsignedInteger:[[panel keyCombo] modifiers]], nil];
     [changeDict setObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:nsClippyKeyCombo];
   }
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
+{
+  NSUInteger val = [[fieldEditor string] integerValue];
+
+  if ((val >= 0) && (val < 50))
+  {
+    hisval_ = val;
+    [clippyMaxHistory setIntegerValue:val];
+    [stepper setIntegerValue:hisval_];
+    [self clippyStepperClicked:self];
+    return YES;
+  }
+  [clippyMaxHistory setIntegerValue:hisval_];
+  [clippyMaxHistory selectText:self];
+  return NO;
 }
 
 @end

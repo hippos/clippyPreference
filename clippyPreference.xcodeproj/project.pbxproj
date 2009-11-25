@@ -15,6 +15,8 @@
 		8D202CF10486D31800D8A456 /* clippyPreferencePref.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* clippyPreferencePref.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
+		A20C166A10BC8837003A3D86 /* Edit.png in Resources */ = {isa = PBXBuildFile; fileRef = A20C166910BC8837003A3D86 /* Edit.png */; };
+		A20C168810BC8FDB003A3D86 /* Paste.png in Resources */ = {isa = PBXBuildFile; fileRef = A20C168710BC8FDB003A3D86 /* Paste.png */; };
 		A20DEC4A10AB6AEC00D2F44C /* PTKeyboardIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */; };
 		A2A1018F10ACB83B00F4EB23 /* PTKeyComboPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = A2A1018B10ACB83B00F4EB23 /* PTKeyComboPanel.nib */; };
 		A2A1019010ACB83B00F4EB23 /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A1018D10ACB83B00F4EB23 /* PTKeyCodes.plist */; };
@@ -41,9 +43,12 @@
 		32DBCFA20370C41700C91783 /* clippyPreference_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clippyPreference_Prefix.pch; sourceTree = "<group>"; };
 		8D202CF70486D31800D8A456 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* clippyPreference.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clippyPreference.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20C166910BC8837003A3D86 /* Edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edit.png; sourceTree = "<group>"; };
+		A20C168710BC8FDB003A3D86 /* Paste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paste.png; sourceTree = "<group>"; };
 		A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PTKeyboardIcon.tiff; sourceTree = "<group>"; };
 		A2A1018C10ACB83B00F4EB23 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PTKeyComboPanel.nib; sourceTree = "<group>"; };
 		A2A1018E10ACB83B00F4EB23 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/PTKeyCodes.plist; sourceTree = "<group>"; };
+		A2BC0B6410BDD9C50016E59B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/clippyPreferencePref.xib; sourceTree = "<group>"; };
 		A2D9AC9C10ACD249002421E5 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTHotKey.h; path = PTHotKey/PTHotKey.h; sourceTree = "<group>"; };
 		A2D9AC9D10ACD249002421E5 /* PTHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTHotKey.m; path = PTHotKey/PTHotKey.m; sourceTree = "<group>"; };
 		A2D9AC9E10ACD249002421E5 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTHotKeyCenter.h; path = PTHotKey/PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A2E807D110BDCBEC005E6E44 /* icons */,
 				A2A1018B10ACB83B00F4EB23 /* PTKeyComboPanel.nib */,
 				A2A1018D10ACB83B00F4EB23 /* PTKeyCodes.plist */,
 				A20DEC4910AB6AEC00D2F44C /* PTKeyboardIcon.tiff */,
@@ -177,6 +183,15 @@
 			name = PTHotkey;
 			sourceTree = "<group>";
 		};
+		A2E807D110BDCBEC005E6E44 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				A20C168710BC8FDB003A3D86 /* Paste.png */,
+				A20C166910BC8837003A3D86 /* Edit.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -247,6 +262,8 @@
 				A20DEC4A10AB6AEC00D2F44C /* PTKeyboardIcon.tiff in Resources */,
 				A2A1018F10ACB83B00F4EB23 /* PTKeyComboPanel.nib in Resources */,
 				A2A1019010ACB83B00F4EB23 /* PTKeyCodes.plist in Resources */,
+				A20C166A10BC8837003A3D86 /* Edit.png in Resources */,
+				A20C168810BC8FDB003A3D86 /* Paste.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +341,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F506C043013D9D8C01CA16C8 /* English */,
+				A2BC0B6410BDD9C50016E59B /* Japanese */,
 			);
 			name = clippyPreferencePref.xib;
 			sourceTree = "<group>";

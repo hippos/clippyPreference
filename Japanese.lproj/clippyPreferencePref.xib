@@ -73,7 +73,7 @@
 						<object class="NSTextField" id="1010976505">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{181, 110}, {33, 22}}</string>
+							<string key="NSFrame">{{134, 109}, {33, 22}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="423145816">
@@ -106,7 +106,7 @@
 						<object class="NSStepper" id="574047844">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{219, 107}, {19, 27}}</string>
+							<string key="NSFrame">{{172, 106}, {19, 27}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSStepperCell" key="NSCell" id="523301276">
@@ -167,13 +167,13 @@
 						<object class="NSTextField" id="589235151">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{240, 112}, {45, 17}}</string>
+							<string key="NSFrame">{{193, 111}, {237, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="120907026">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">(0-49)</string>
+								<string key="NSContents">(0-49) 個のクリップボード履歴を保存</string>
 								<reference key="NSSupport" ref="117585398"/>
 								<reference key="NSControlView" ref="589235151"/>
 								<object class="NSColor" key="NSBackgroundColor" id="579577888">
@@ -254,7 +254,7 @@
 							<object class="NSButtonCell" key="NSCell" id="902739724">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">use clippy internal file</string>
+								<string key="NSContents">clippy内蔵ファイルを使う</string>
 								<reference key="NSSupport" ref="117585398"/>
 								<reference key="NSControlView" ref="909133681"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -319,15 +319,35 @@
 						<object class="NSTextField" id="180518669">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{96, 112}, {80, 17}}</string>
+							<string key="NSFrame">{{96, 111}, {49, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="649742229">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Max History</string>
-								<reference key="NSSupport" ref="117585398"/>
+								<string key="NSContents">最大</string>
+								<object class="NSFont" key="NSSupport" id="305451341">
+									<string key="NSName">HiraKakuProN-W3</string>
+									<double key="NSSize">13</double>
+									<int key="NSfFlags">16</int>
+								</object>
 								<reference key="NSControlView" ref="180518669"/>
+								<reference key="NSBackgroundColor" ref="579577888"/>
+								<reference key="NSTextColor" ref="109681864"/>
+							</object>
+						</object>
+						<object class="NSTextField" id="540650705">
+							<reference key="NSNextResponder" ref="1037298196"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{205, 32}, {108, 17}}</string>
+							<reference key="NSSuperview" ref="1037298196"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="664870588">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">（ホットキー）</string>
+								<reference key="NSSupport" ref="305451341"/>
+								<reference key="NSControlView" ref="540650705"/>
 								<reference key="NSBackgroundColor" ref="579577888"/>
 								<reference key="NSTextColor" ref="109681864"/>
 							</object>
@@ -494,6 +514,7 @@
 							<reference ref="768844244"/>
 							<reference ref="1010976505"/>
 							<reference ref="574047844"/>
+							<reference ref="540650705"/>
 							<reference ref="589235151"/>
 							<reference ref="180518669"/>
 						</array>
@@ -650,6 +671,19 @@
 						<reference key="object" ref="649742229"/>
 						<reference key="parent" ref="180518669"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">182</int>
+						<reference key="object" ref="540650705"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="664870588"/>
+						</array>
+						<reference key="parent" ref="1037298196"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">183</int>
+						<reference key="object" ref="664870588"/>
+						<reference key="parent" ref="540650705"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -683,6 +717,8 @@
 				<string key="173.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="174.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="175.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="182.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="183.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -690,7 +726,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">179</int>
+			<int key="maxID">183</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
