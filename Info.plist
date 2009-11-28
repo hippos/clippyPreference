@@ -27,7 +27,7 @@
 	<key>NSPrefPaneIconFile</key>
 	<string>clippyPreferencePref.tiff</string>
 	<key>NSPrefPaneIconLabel</key>
-	<string>clippyPreference</string>
+	<string>clippy</string>
 	<key>NSPrincipalClass</key>
 	<string>clippyPreferencePref</string>
 </dict>
