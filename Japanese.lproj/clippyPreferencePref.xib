@@ -73,8 +73,9 @@
 						<object class="NSTextField" id="1010976505">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{134, 109}, {33, 22}}</string>
+							<string key="NSFrame">{{131, 120}, {33, 22}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
+							<int key="NSTag">20</int>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="423145816">
 								<int key="NSCellFlags">-1804468672</int>
@@ -92,7 +93,7 @@
 										<bytes key="NSWhite">MQA</bytes>
 									</object>
 								</object>
-								<object class="NSColor" key="NSTextColor">
+								<object class="NSColor" key="NSTextColor" id="793562547">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textColor</string>
@@ -106,7 +107,7 @@
 						<object class="NSStepper" id="574047844">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{172, 106}, {19, 27}}</string>
+							<string key="NSFrame">{{169, 117}, {19, 27}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSStepperCell" key="NSCell" id="523301276">
@@ -147,7 +148,7 @@
 								<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 								<string>NeXT TIFF v4.0 pasteboard type</string>
 							</set>
-							<string key="NSFrame">{{29, 97}, {48, 48}}</string>
+							<string key="NSFrame">{{30, 89}, {48, 48}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="61710727">
@@ -167,7 +168,7 @@
 						<object class="NSTextField" id="589235151">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{193, 111}, {237, 17}}</string>
+							<string key="NSFrame">{{190, 122}, {237, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="120907026">
@@ -248,13 +249,13 @@
 						<object class="NSButton" id="909133681">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{94, 208}, {239, 18}}</string>
+							<string key="NSFrame">{{94, 208}, {343, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="902739724">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">clippy内蔵ファイルを使う</string>
+								<string key="NSContents">clippy内蔵のファイルを使う（文字コードはUTF-8）</string>
 								<reference key="NSSupport" ref="117585398"/>
 								<reference key="NSControlView" ref="909133681"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -297,7 +298,7 @@
 						<object class="NSBox" id="591271954">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">12</int>
-							<string key="NSFrame">{{8, 81}, {452, 5}}</string>
+							<string key="NSFrame">{{12, 75}, {452, 5}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
@@ -319,7 +320,7 @@
 						<object class="NSTextField" id="180518669">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{96, 111}, {49, 17}}</string>
+							<string key="NSFrame">{{93, 122}, {33, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="649742229">
@@ -348,6 +349,57 @@
 								<string key="NSContents">（ホットキー）</string>
 								<reference key="NSSupport" ref="305451341"/>
 								<reference key="NSControlView" ref="540650705"/>
+								<reference key="NSBackgroundColor" ref="579577888"/>
+								<reference key="NSTextColor" ref="109681864"/>
+							</object>
+						</object>
+						<object class="NSTextField" id="1004247807">
+							<reference key="NSNextResponder" ref="1037298196"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{131, 92}, {33, 22}}</string>
+							<reference key="NSSuperview" ref="1037298196"/>
+							<int key="NSTag">21</int>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="240781763">
+								<int key="NSCellFlags">-1804468671</int>
+								<int key="NSCellFlags2">71304192</int>
+								<string key="NSContents"/>
+								<reference key="NSSupport" ref="117585398"/>
+								<reference key="NSControlView" ref="1004247807"/>
+								<bool key="NSDrawsBackground">YES</bool>
+								<reference key="NSBackgroundColor" ref="161378836"/>
+								<reference key="NSTextColor" ref="793562547"/>
+							</object>
+						</object>
+						<object class="NSStepper" id="367716069">
+							<reference key="NSNextResponder" ref="1037298196"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{169, 89}, {19, 27}}</string>
+							<reference key="NSSuperview" ref="1037298196"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSStepperCell" key="NSCell" id="456757472">
+								<int key="NSCellFlags">917024</int>
+								<int key="NSCellFlags2">0</int>
+								<reference key="NSControlView" ref="367716069"/>
+								<double key="NSValue">1</double>
+								<double key="NSMinValue">1</double>
+								<double key="NSMaxValue">120</double>
+								<double key="NSIncrement">1</double>
+								<bool key="NSAutorepeat">YES</bool>
+							</object>
+						</object>
+						<object class="NSTextField" id="1033260560">
+							<reference key="NSNextResponder" ref="1037298196"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{190, 94}, {217, 17}}</string>
+							<reference key="NSSuperview" ref="1037298196"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="226443533">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">(1-120) 秒間隔で履歴をチェック</string>
+								<reference key="NSSupport" ref="305451341"/>
+								<reference key="NSControlView" ref="1033260560"/>
 								<reference key="NSBackgroundColor" ref="579577888"/>
 								<reference key="NSTextColor" ref="109681864"/>
 							</object>
@@ -464,11 +516,51 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">stepper</string>
+						<string key="label">historyStepper</string>
 						<reference key="source" ref="294453543"/>
 						<reference key="destination" ref="574047844"/>
 					</object>
-					<int key="connectionID">171</int>
+					<int key="connectionID">190</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">intervalStepper</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="367716069"/>
+					</object>
+					<int key="connectionID">191</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clippyCheckIntervel</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="1004247807"/>
+					</object>
+					<int key="connectionID">192</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: interval_value</string>
+						<reference key="source" ref="367716069"/>
+						<reference key="destination" ref="294453543"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="367716069"/>
+							<reference key="NSDestination" ref="294453543"/>
+							<string key="NSLabel">value: interval_value</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">interval_value</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">195</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">clippyIntervalStepperClicked:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="367716069"/>
+					</object>
+					<int key="connectionID">196</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -505,18 +597,21 @@
 						<reference key="object" ref="1037298196"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="1043258060"/>
-							<reference ref="591271954"/>
 							<reference ref="772678487"/>
-							<reference ref="988302514"/>
 							<reference ref="208721774"/>
 							<reference ref="909133681"/>
 							<reference ref="422967708"/>
 							<reference ref="768844244"/>
+							<reference ref="540650705"/>
 							<reference ref="1010976505"/>
 							<reference ref="574047844"/>
-							<reference ref="540650705"/>
 							<reference ref="589235151"/>
 							<reference ref="180518669"/>
+							<reference ref="988302514"/>
+							<reference ref="591271954"/>
+							<reference ref="1004247807"/>
+							<reference ref="367716069"/>
+							<reference ref="1033260560"/>
 						</array>
 						<reference key="parent" ref="660800786"/>
 					</object>
@@ -684,6 +779,45 @@
 						<reference key="object" ref="664870588"/>
 						<reference key="parent" ref="540650705"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">184</int>
+						<reference key="object" ref="1004247807"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="240781763"/>
+						</array>
+						<reference key="parent" ref="1037298196"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">185</int>
+						<reference key="object" ref="240781763"/>
+						<reference key="parent" ref="1004247807"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">186</int>
+						<reference key="object" ref="367716069"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="456757472"/>
+						</array>
+						<reference key="parent" ref="1037298196"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">187</int>
+						<reference key="object" ref="456757472"/>
+						<reference key="parent" ref="367716069"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">188</int>
+						<reference key="object" ref="1033260560"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="226443533"/>
+						</array>
+						<reference key="parent" ref="1037298196"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">189</int>
+						<reference key="object" ref="226443533"/>
+						<reference key="parent" ref="1033260560"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -719,6 +853,12 @@
 				<string key="175.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="182.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="183.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="184.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="185.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="186.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="187.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="188.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="189.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -726,7 +866,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">183</int>
+			<int key="maxID">196</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -751,16 +891,19 @@
 					<string key="superclassName">NSPreferencePane</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="clippyHotKeyClicked:">id</string>
+						<string key="clippyIntervalStepperClicked:">id</string>
 						<string key="clippyStepperClicked:">id</string>
 						<string key="clippyTextPathClicked:">id</string>
 						<string key="useClippyTextClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="clippyCheckIntervel">NSTextField</string>
 						<string key="clippyHotKey">NSTextField</string>
 						<string key="clippyMaxHistory">NSTextField</string>
 						<string key="clippyTextPath">NSTextField</string>
+						<string key="historyStepper">NSStepper</string>
+						<string key="intervalStepper">NSStepper</string>
 						<string key="selecPathButton">NSButton</string>
-						<string key="stepper">NSStepper</string>
 						<string key="useClippyText">NSButton</string>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

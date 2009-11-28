@@ -15,12 +15,14 @@ static CFStringRef appID              = CFSTR("com.hippos-lab.clippy");
 /* clippy preference keys */
 static CFStringRef cfUseClippyText    = CFSTR("useClippyText");
 static CFStringRef cfClippyMaxHistory = CFSTR("clippyMaxHistory");
+static CFStringRef cfClippyChkInterval= CFSTR("clippyChkInterval");
 static CFStringRef cfClippyTextPath   = CFSTR("clippyTextPath");
 static CFStringRef cfClippyKeyCombo   = CFSTR("clippyKeyCombo");
 static CFStringRef cfKeyCode          = CFSTR("keyCode");
 static CFStringRef cfModifiers        = CFSTR("modifiers");
 static NSString   *nsUseClippyText    = @"useClippyText";
 static NSString   *nsClippyMaxHistory = @"clippyMaxHistory";
+static NSString   *nsClippyChkInterval= @"clippyChkInterval";
 static NSString   *nsClippyTextPath   = @"clippyTextPath";
 static NSString   *nsClippyKeyCombo   = @"clippyKeyCombo";
 static NSString   *nsKeyCode          = @"keyCode";
@@ -29,6 +31,7 @@ static NSString   *nsModifiers        = @"modifiers";
 @implementation clippyPreferencePref
 
 @synthesize history_value = hisval_;
+@synthesize interval_value = interval_;
 
 - (id)initWithBundle:(NSBundle *)bundle
 {
@@ -40,10 +43,14 @@ static NSString   *nsModifiers        = @"modifiers";
 {
 
   hisval_ = 10;
+  interval_ = 2.25;
   [useClippyText setState:YES];
   [clippyMaxHistory setIntegerValue:hisval_];
   [clippyMaxHistory setDelegate:self];
-  [stepper setIntegerValue:hisval_];
+  [historyStepper setIntegerValue:hisval_];
+  [intervalStepper setIntegerValue:interval_];
+  [clippyCheckIntervel setIntegerValue:interval_];
+  [clippyCheckIntervel setDelegate:self];
   [selecPathButton setEnabled:![useClippyText state]];
   [clippyTextPath setStringValue:@""];
 
@@ -62,7 +69,19 @@ static NSString   *nsModifiers        = @"modifiers";
   {
     CFNumberGetValue(value, kCFNumberSInt32Type, &hisval_);
     [clippyMaxHistory setIntegerValue:hisval_];
-    [stepper setIntegerValue:hisval_];
+    [historyStepper setIntegerValue:hisval_];
+  }
+  if (value)
+  {
+    CFRelease(value);
+  }
+
+  value = CFPreferencesCopyAppValue(cfClippyChkInterval, appID);
+  if (value && (CFGetTypeID(value) == CFNumberGetTypeID()))
+  {
+    CFNumberGetValue(value, kCFNumberDoubleType, &interval_);
+    [clippyCheckIntervel setDoubleValue:interval_];
+    [intervalStepper setDoubleValue:interval_];
   }
   if (value)
   {
@@ -139,6 +158,16 @@ static NSString   *nsModifiers        = @"modifiers";
   [changeDict setValue:[NSNumber numberWithInteger:hisval_] forKey:nsClippyMaxHistory];
   CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt32Type,&hisval_);
   CFPreferencesSetAppValue(cfClippyMaxHistory,h,appID);
+  CFRelease(h);
+}
+
+- (IBAction) clippyIntervalStepperClicked:(id)sender
+{
+  NSLog(@"clippyIntervalStepperClicked");
+  [clippyCheckIntervel setDoubleValue:interval_];
+  [changeDict setValue:[NSNumber numberWithDouble:interval_] forKey:nsClippyChkInterval];
+  CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberDoubleType,&interval_);
+  CFPreferencesSetAppValue(cfClippyChkInterval,h,appID);
   CFRelease(h);
 }
 
@@ -238,19 +267,40 @@ static NSString   *nsModifiers        = @"modifiers";
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
-  NSUInteger val = [[fieldEditor string] integerValue];
-
-  if ((val >= 0) && (val < 50))
+  if ([control tag] == 20)
   {
-    hisval_ = val;
-    [clippyMaxHistory setIntegerValue:val];
-    [stepper setIntegerValue:hisval_];
-    [self clippyStepperClicked:self];
+    NSUInteger val = [[fieldEditor string] integerValue];
+    if ((val >= [historyStepper minValue]) && (val < [historyStepper maxValue]))
+    {
+      hisval_ = val;
+      [clippyMaxHistory setIntegerValue:val];
+      [historyStepper setIntegerValue:hisval_];
+      [self clippyStepperClicked:self];
+      return YES;
+    }
+    [clippyMaxHistory setIntegerValue:hisval_];
+    [clippyMaxHistory selectText:self];
+    return NO;
+  }
+  else if ([control tag] == 21)
+  {
+    double dval = [[fieldEditor string] doubleValue];
+    if ((dval >= [intervalStepper minValue]) && (dval < [intervalStepper maxValue]))
+    {
+      interval_ = dval;
+      [clippyCheckIntervel setDoubleValue:dval];
+      [intervalStepper setDoubleValue:interval_];
+      [self clippyIntervalStepperClicked:self];
+      return YES;
+    }
+    [clippyCheckIntervel setDoubleValue:interval_];
+    [clippyCheckIntervel selectText:self];
+    return NO;
+  }
+  else
+  {
     return YES;
   }
-  [clippyMaxHistory setIntegerValue:hisval_];
-  [clippyMaxHistory selectText:self];
-  return NO;
 }
 
 @end
