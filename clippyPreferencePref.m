@@ -87,7 +87,19 @@ static NSString   *nsModifiers        = @"modifiers";
   {
     CFRelease(value);
   }
-
+  if (hisval_ == 0)
+  {
+    [clippyCheckIntervel setEnabled:NO];
+    [clippyCheckIntervel setEditable:NO];
+    [intervalStepper setEnabled:NO];
+  }
+  else
+  {
+    [clippyCheckIntervel setEnabled:YES];
+    [clippyCheckIntervel setEditable:YES];
+    [intervalStepper setEnabled:YES];
+  }
+  
   if ([useClippyText state] == NO)
   {
     value = CFPreferencesCopyAppValue(cfClippyTextPath, appID);
@@ -156,14 +168,25 @@ static NSString   *nsModifiers        = @"modifiers";
 {
   [clippyMaxHistory setIntegerValue:hisval_];
   [changeDict setValue:[NSNumber numberWithInteger:hisval_] forKey:nsClippyMaxHistory];
-  CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt32Type,&hisval_);
-  CFPreferencesSetAppValue(cfClippyMaxHistory,h,appID);
+  CFNumberRef h = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &hisval_);
+  CFPreferencesSetAppValue(cfClippyMaxHistory, h, appID);
   CFRelease(h);
+  if (hisval_ == 0)
+  {
+    [clippyCheckIntervel setEnabled:NO];
+    [clippyCheckIntervel setEditable:NO];
+    [intervalStepper setEnabled:NO];
+  }
+  else
+  {
+    [clippyCheckIntervel setEnabled:YES];
+    [clippyCheckIntervel setEditable:YES];
+    [intervalStepper setEnabled:YES];
+  }
 }
 
 - (IBAction) clippyIntervalStepperClicked:(id)sender
 {
-  NSLog(@"clippyIntervalStepperClicked");
   [clippyCheckIntervel setDoubleValue:interval_];
   [changeDict setValue:[NSNumber numberWithDouble:interval_] forKey:nsClippyChkInterval];
   CFNumberRef h = CFNumberCreate(kCFAllocatorDefault,kCFNumberDoubleType,&interval_);
