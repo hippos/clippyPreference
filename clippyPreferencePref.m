@@ -142,14 +142,16 @@ static NSString   *nsModifiers        = @"modifiers";
 {
 	NSOpenPanel* op = [NSOpenPanel openPanel];
 	NSArray* ext = [NSArray arrayWithObjects:@"txt",@"text",nil];
-	if ([op runModalForDirectory:NSHomeDirectory() file:nil types:ext] != NSFileHandlingPanelOKButton)
-  {
-    return;
-  }
-  [clippyTextPath setStringValue:[[op filename] lastPathComponent]];
-  [changeDict setValue:[op filename] forKey:nsClippyTextPath];
+  [op beginSheetForDirectory:NSHomeDirectory() file:nil types:ext modalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+  if (returnCode != NSOKButton) return;
+  [clippyTextPath setStringValue:[[panel filename] lastPathComponent]];
+  [changeDict setValue:[panel filename] forKey:nsClippyTextPath];
   [changeDict setValue:[NSNumber numberWithInteger:NO] forKey:nsUseClippyText];
-  CFPreferencesSetAppValue(cfClippyTextPath,[op filename],appID);
+  CFPreferencesSetAppValue(cfClippyTextPath,[panel filename],appID);  
 }
 
 - (IBAction) clippyHotKeyClicked:(id)sender
