@@ -397,7 +397,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = clippyPreference;
 				SDKROOT = macosx10.6;
-				VALID_ARCHS = "i386 ppc x86_64";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -413,7 +413,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = clippyPreference;
 				SDKROOT = macosx10.6;
-				VALID_ARCHS = "i386 ppc x86_64";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
